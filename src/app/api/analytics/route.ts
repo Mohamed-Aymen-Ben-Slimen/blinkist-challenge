@@ -39,8 +39,8 @@ function calculateCTR(): CTR {
 
   const ctr: CTR = {};
   for (const variationId in uniqueUsers) {
-    const clicks = uniqueUsers[variationId].size;
-    const pageViews = uniquePageViews[variationId].size;
+    const clicks = uniqueUsers[variationId]?.size ?? 0;
+    const pageViews = uniquePageViews[variationId]?.size ?? 0;
     ctr[variationId] = {
       clicks,
       pageViews,
