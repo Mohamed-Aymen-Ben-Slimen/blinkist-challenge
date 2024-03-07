@@ -3,7 +3,8 @@
     A real database should be used in a real application.
 */
 
-import { Low, Memory } from "lowdb";
+import { Low } from "lowdb";
+import { JSONFile } from "lowdb/node";
 
 interface PageViewRecord {
   url: string;
@@ -25,7 +26,8 @@ interface DbSchema {
   eventData: EventRecord[];
 }
 
-const db = new Low<DbSchema>(new Memory(), {
+const adapter = new JSONFile<DbSchema>("db.json");
+const db = new Low<DbSchema>(adapter, {
   pageViewData: [],
   eventData: [],
 });
