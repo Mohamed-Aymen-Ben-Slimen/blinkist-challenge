@@ -9,14 +9,20 @@ interface CTR {
 }
 
 export async function GET() {
-  const ctrPerVariant = calculateCTR();
+  const ctrPerVariant = await calculateCTR();
 
   return Response.json({ ...ctrPerVariant });
 }
 
-function calculateCTR(): CTR {
-  const pageViewData = getPageViewData();
-  const eventData = getEventData();
+async function calculateCTR(): Promise<CTR> {
+  const pageViewData = await getPageViewData();
+  const eventData = await getEventData();
+
+  console.log({ pageViewData, eventData });
+
+  if (!pageViewData || !eventData) {
+    return {};
+  }
 
   const signUpClicks = eventData.filter(
     (event) => event.eventName === "Sign-Up-Click"
