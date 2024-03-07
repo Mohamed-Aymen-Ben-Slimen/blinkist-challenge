@@ -18,8 +18,6 @@ async function calculateCTR(): Promise<CTR> {
   const pageViewData = await getPageViewData();
   const eventData = await getEventData();
 
-  console.log({ pageViewData, eventData });
-
   if (!pageViewData || !eventData) {
     return {};
   }
