@@ -28,7 +28,6 @@ export const getPageViewData = async (): Promise<PageViewRecord[]> => {
 export const pushPageViewData = async (record: PageViewRecord) => {
   let pageViewData = await getPageViewData();
   pageViewData?.push(record);
-  console.log("pageViewData", record, pageViewData);
   await kv.set("pageViewData", pageViewData);
 };
 
