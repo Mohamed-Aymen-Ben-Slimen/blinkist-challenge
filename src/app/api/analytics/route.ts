@@ -10,7 +10,8 @@ interface CTR {
 
 export async function GET() {
   const ctrPerVariant = calculateCTR();
-  return Response.json({ ctr: ctrPerVariant });
+
+  return Response.json({ ...ctrPerVariant });
 }
 
 function calculateCTR(): CTR {

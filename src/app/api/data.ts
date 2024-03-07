@@ -1,7 +1,9 @@
 /* 
-    Variables in this file used to mimic a database.
+    Lowdb is used as a lightway data storage.
     A real database should be used in a real application.
 */
+
+import { Low, Memory } from "lowdb";
 
 interface PageViewRecord {
   url: string;
@@ -9,12 +11,6 @@ interface PageViewRecord {
   userId: string;
   timestamp: Date;
 }
-
-let pageViewData: PageViewRecord[] = [];
-
-export const getPageViewData = () => pageViewData;
-export const pushPageViewData = (record: PageViewRecord) =>
-  pageViewData.push(record);
 
 interface EventRecord {
   url: string;
@@ -24,7 +20,24 @@ interface EventRecord {
   timestamp: Date;
 }
 
-let eventData: EventRecord[] = [];
+interface DbSchema {
+  pageViewData: PageViewRecord[];
+  eventData: EventRecord[];
+}
 
-export const getEventData = () => eventData;
-export const pushEventData = (record: EventRecord) => eventData.push(record);
+const db = new Low<DbSchema>(new Memory(), {
+  pageViewData: [],
+  eventData: [],
+});
+
+export const getPageViewData = (): PageViewRecord[] => db.data.pageViewData;
+export const pushPageViewData = (record: PageViewRecord): void => {
+  db.data.pageViewData.push(record);
+  db.write();
+};
+
+export const getEventData = (): EventRecord[] => db.data.eventData;
+export const pushEventData = (record: EventRecord): void => {
+  db.data.eventData.push(record);
+  db.write();
+};
