@@ -13,8 +13,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Deployed project
 
-- The project is deployed on Vercel on this link [https://blinklist-challenge.vercel.app](https://blinklist-challenge.vercel.app)
-- You can see the calculated analytics on this link [https://blinklist-challenge.vercel.app/api/analytics](https://blinklist-challenge.vercel.app/api/analytics)
+- The project is deployed on Vercel on this link [https://blinkist-challenge.vercel.app](https://blinkist-challenge.vercel.app)
+- You can see the calculated analytics on this link [https://blinkist-challenge.vercel.app/api/analytics](https://blinkist-challenge.vercel.app/api/analytics)
 
 ## Description
 
